@@ -40,10 +40,10 @@ describe('concept content', () => {
 });
 
 describe('languages', () => {
-  it('offers Arabic first plus ten more languages with correct direction', () => {
+  it('offers Arabic first plus eleven more languages with correct direction', () => {
     expect(LOCALES[0]).toBe('ar');
-    expect(LOCALES).toEqual(['ar', 'en', 'ku', 'syr', 'sur', 'tr', 'fr', 'es', 'de', 'it', 'zh']);
-    expect(LOCALES.filter((l) => LOCALE_META[l].dir === 'rtl')).toEqual(['ar', 'ku', 'syr']);
+    expect(LOCALES).toEqual(['ar', 'en', 'ku', 'syr', 'sar', 'sur', 'tr', 'fr', 'es', 'de', 'it', 'zh']);
+    expect(LOCALES.filter((l) => LOCALE_META[l].dir === 'rtl')).toEqual(['ar', 'ku', 'syr', 'sar']);
   });
 
   it('translates every drink, signature story and section in every language', () => {
@@ -72,6 +72,10 @@ describe('languages', () => {
     expect(MESSAGES.ku.hero.lede).toMatch(/[ڕڵۆێە]/);
     expect(MESSAGES.syr.hero.lede).toMatch(/[ܐ-ܯ]/);
     expect(MESSAGES.syr.hero.lede).not.toMatch(/[ء-ي]/);
+    // Sureth in Arabic letters: same words as the Syriac version, Arabic script, Iraqi letters for p/ch/g.
+    expect(MESSAGES.sar.hero.lede).toMatch(/[پچگ]/);
+    expect(MESSAGES.sar.hero.lede).not.toMatch(/[ܐ-ܯ]/);
+    expect(MESSAGES.sar.hero.line1.split(' ')).toHaveLength(MESSAGES.syr.hero.line1.split(' ').length);
     expect(MESSAGES.zh.hero.lede).toMatch(/[一-鿿]/);
   });
 });
