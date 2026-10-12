@@ -1,0 +1,122 @@
+.footer {
+  padding-block: 56px calc(40px + env(safe-area-inset-bottom));
+  background: var(--ink-cool);
+  color: #d6e3ea;
+  font-size: var(--step--1);
+}
+
+.footer__inner {
+  display: grid;
+  gap: 24px;
+}
+
+.footer__word {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #fff;
+}
+
+.footer__word i {
+  font-weight: 300;
+  color: var(--frost);
+}
+
+.footer__ar {
+  margin-top: 4px;
+  color: #a9c3d0;
+}
+
+.footer__notice {
+  max-width: 70ch;
+  padding: 14px 18px;
+  border-radius: var(--radius-s);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px dashed rgba(255, 255, 255, 0.25);
+  line-height: 1.8;
+}
+
+.footer__credits summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #fff;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer__credits ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin: 10px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer__credits a {
+  color: #fff;
+  text-underline-offset: 3px;
+}
+
+.footer :focus-visible {
+  outline-color: var(--frost);
+}
+
+/* Studio credit: always the last line of the page. */
+.footer__powered {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: #a9c3d0;
+}
+
+.footer__powered a,
+.footer__powered-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer__powered img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(140, 196, 220, 0.35), 0 0 18px rgba(30, 120, 220, 0.35);
+}
+
+.footer__powered-name {
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.footer__powered a:hover .footer__powered-name {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (min-width: 900px) {
+  .footer__powered {
+    grid-column: 1 / -1;
+  }
+
+  .footer__inner {
+    grid-template-columns: auto 1fr;
+    align-items: start;
+  }
+
+  .footer__credits {
+    grid-column: 1 / -1;
+  }
+}

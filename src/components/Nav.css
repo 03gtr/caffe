@@ -1,0 +1,252 @@
+.concept-banner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 10px;
+  padding: 8px var(--gutter);
+  background: var(--espresso);
+  color: #f1e3cf;
+  font-size: var(--step--1);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.concept-banner__long {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .concept-banner__long {
+    display: inline;
+  }
+
+  .concept-banner__short {
+    display: none;
+  }
+}
+
+.concept-banner strong {
+  color: var(--crema);
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--nav-h);
+  background: color-mix(in srgb, var(--paper) 86%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  backdrop-filter: blur(14px) saturate(1.2);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-inline: env(safe-area-inset-left) env(safe-area-inset-right);
+}
+
+.nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex: none;
+}
+
+.nav__glyph {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.nav__word {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.nav__word i {
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.nav__links {
+  display: none;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__links a {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav__links a:hover {
+  background: var(--line);
+}
+
+.nav__end {
+  margin-inline-start: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Language picker: native <select> stretched invisibly over a compact pill. */
+.lang-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.lang-switch:hover {
+  background: var(--line);
+}
+
+.lang-switch:focus-within {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.lang-switch__icon {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+
+.lang-switch__code {
+  font-family: var(--font-body);
+  letter-spacing: 0.06em;
+}
+
+.lang-switch__select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  font-size: 16px; /* prevents iOS zoom on focus */
+  appearance: none;
+}
+
+.nav__cta {
+  min-height: 42px;
+  padding: 8px 18px;
+  font-size: 0.95rem;
+}
+
+/* Small phones: keep the brand, language and menu button on one line. */
+@media (max-width: 420px) {
+  .nav__inner {
+    gap: 8px;
+  }
+
+  .nav__brand {
+    gap: 6px;
+  }
+
+  .nav__word {
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+  }
+
+  .nav__glyph {
+    width: 24px;
+    height: 24px;
+  }
+
+  .nav__end {
+    gap: 6px;
+  }
+
+  .lang-switch {
+    padding: 0 10px;
+    gap: 4px;
+  }
+
+  .nav__cta {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 359px) {
+  .nav__word {
+    display: none;
+  }
+}
+
+.thermo-meter {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.thermo-meter__track {
+  position: relative;
+  width: 72px;
+  height: 6px;
+  border-radius: 999px;
+  /* Hot sits at the inline start: the right edge in RTL, the left edge in LTR. */
+  background: linear-gradient(to left, var(--ember), var(--caramel) 40%, var(--frost) 75%, var(--glacier));
+}
+
+[dir='ltr'] .thermo-meter__track {
+  background: linear-gradient(to right, var(--ember), var(--caramel) 40%, var(--frost) 75%, var(--glacier));
+}
+
+.thermo-meter__dot {
+  position: absolute;
+  top: 50%;
+  /* RTL: hot on the right (start), cold on the left (end). */
+  inset-inline-start: calc(var(--temp) * 100%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 3px solid var(--accent);
+  transform: translate(50%, -50%);
+}
+
+[dir='ltr'] .thermo-meter__dot {
+  transform: translate(-50%, -50%);
+}
+
+@media (min-width: 760px) {
+  .nav__links {
+    display: flex;
+  }
+}
+
+@media (min-width: 1040px) {
+  .thermo-meter {
+    display: inline-flex;
+  }
+}

@@ -1,0 +1,11 @@
+node_modules
+dist
+dist-ssr
+*.log
+.DS_Store
+dist-share
+share/*.html
+
+# Local tooling and internal notes (not part of the published site)
+.claude/
+CAFE_AUDIT.md

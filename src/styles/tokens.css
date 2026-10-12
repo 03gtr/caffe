@@ -1,0 +1,86 @@
+/*
+ * STEAM & FROST — design tokens.
+ *
+ * The Thermostat: one number, --temp (0 = hot, 1 = iced), drives the palette through
+ * color-mix(). It is scrubbed by scroll at page level and overridden locally by the
+ * Hot/Iced switch. Elements that need to re-derive colours from a local --temp get
+ * the `.thermo` class (custom properties inherit their already-computed value).
+ */
+@property --temp {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --mt {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0.5;
+}
+
+:root {
+  /* Raw palette */
+  --espresso: #2a1a12;
+  --roast: #47291b;
+  --ember: #9a3b1b;
+  --caramel: #c98a4b;
+  --crema: #e7c49a;
+  --cream: #fbf6ee;
+  --paper-warm: #f3eadb;
+
+  --ink-cool: #10273a;
+  --glacier: #1d5d7e;
+  --frost: #8cc4dc;
+  --silver: #d4dfe4;
+  --paper-cool: #e9f1f4;
+  --citrus: #e9a23b;
+  --lime: #b7c95a;
+
+  /* Type */
+  --font-body: 'Alexandria Variable', 'Segoe UI', Tahoma, system-ui, sans-serif;
+  --font-display-ar: 'Reem Kufi Variable', 'Alexandria Variable', Tahoma, sans-serif;
+  --font-display-en: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+
+  --step--1: clamp(0.82rem, 0.8rem + 0.1vw, 0.9rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.12rem);
+  --step-1: clamp(1.2rem, 1.1rem + 0.5vw, 1.45rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2.1rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3.2rem);
+  --step-4: clamp(2.5rem, 1.8rem + 3.6vw, 5rem);
+  --step-5: clamp(3rem, 2rem + 5.5vw, 7rem);
+
+  /* Space & shape */
+  --gutter: clamp(16px, 4vw, 48px);
+  --max: 1320px;
+  --radius-s: 10px;
+  --radius-m: 18px;
+  --radius-l: 28px;
+  --nav-h: 64px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --temp: 0;
+}
+
+/* Static fallback for browsers without color-mix(): the warm palette. */
+:root,
+.thermo {
+  --paper: var(--paper-warm);
+  --ink: var(--espresso);
+  --accent: var(--ember);
+  --glow: var(--caramel);
+  --line: rgba(42, 26, 18, 0.14);
+  --muted: rgba(42, 26, 18, 0.72);
+}
+
+@supports (color: color-mix(in oklab, red, blue)) {
+  :root,
+  .thermo {
+    --t: calc(var(--temp) * 100%);
+    --paper: color-mix(in oklab, var(--paper-warm), var(--paper-cool) var(--t));
+    --ink: color-mix(in oklab, var(--espresso), var(--ink-cool) var(--t));
+    --accent: color-mix(in oklab, var(--ember), var(--glacier) var(--t));
+    --glow: color-mix(in oklab, var(--caramel), var(--frost) var(--t));
+    --line: color-mix(in oklab, var(--ink) 14%, transparent);
+    --muted: color-mix(in oklab, var(--ink) 74%, var(--paper));
+  }
+}

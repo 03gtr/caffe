@@ -1,0 +1,201 @@
+.hero {
+  --temp: 0;
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(24px, 4vw, 56px) clamp(56px, 8vw, 110px);
+  background:
+    radial-gradient(60% 50% at 85% 10%, rgba(231, 196, 154, 0.55), transparent 70%),
+    radial-gradient(50% 45% at 5% 95%, rgba(140, 196, 220, 0.35), transparent 70%),
+    var(--paper-warm);
+  scroll-margin-top: var(--nav-h);
+}
+
+.hero__grain {
+  z-index: 0;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+
+.hero__title {
+  margin-top: clamp(18px, 3vw, 30px);
+  font-size: clamp(2.6rem, 1.5rem + 4.6vw, 6.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.hero__line {
+  display: block;
+}
+
+.hero__line--warm {
+  color: var(--espresso);
+}
+
+.hero__line--cool {
+  color: var(--glacier);
+}
+
+.hero__word {
+  display: inline-block;
+}
+
+.hero__lede {
+  max-width: 34ch;
+  margin-top: clamp(16px, 2.4vw, 26px);
+  font-size: var(--step-1);
+  line-height: 1.85;
+  color: var(--muted);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: clamp(22px, 3vw, 34px);
+}
+
+.hero__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: clamp(22px, 3vw, 34px) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.hero__facts li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero__facts li::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--caramel);
+}
+
+.hero__facts li:nth-child(2)::before {
+  background: var(--frost);
+}
+
+.hero__facts li:nth-child(3)::before {
+  background: var(--citrus);
+}
+
+.hero__visual {
+  width: 100%;
+  max-width: 620px;
+  justify-self: center;
+}
+
+/* Phones: both actions on one row when they fit, full-width when they don't. */
+@media (max-width: 560px) {
+  .hero {
+    padding-top: 8px;
+  }
+
+  .hero__actions {
+    gap: 8px;
+  }
+
+  .hero__actions .btn {
+    flex: 1 1 auto;
+    padding-inline: 16px;
+    font-size: 0.95rem;
+  }
+
+  .hero__lede {
+    font-size: 1.05rem;
+  }
+}
+
+[dir='ltr'] .hero__title {
+  font-size: clamp(2.5rem, 1.4rem + 4.4vw, 5.8rem);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+}
+
+@media (min-width: 980px) {
+  .hero__inner {
+    grid-template-columns: 1.05fr 1fr;
+    min-height: calc(100vh - var(--nav-h) - 60px);
+  }
+
+  .hero__visual {
+    justify-self: end;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__word {
+    animation: word-rise 0.9s var(--ease-out) both;
+    animation-delay: calc(0.15s + var(--i) * 0.09s);
+  }
+
+  .hero__lede,
+  .hero__actions,
+  .hero__facts {
+    animation: fade-up 0.9s var(--ease-out) both;
+  }
+
+  .hero__lede {
+    animation-delay: 0.55s;
+  }
+
+  .hero__actions {
+    animation-delay: 0.68s;
+  }
+
+  .hero__facts {
+    animation-delay: 0.8s;
+  }
+
+  .hero__visual {
+    animation: visual-in 1.2s var(--ease-out) 0.1s both;
+  }
+}
+
+@keyframes word-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.45em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Transform only: keeping opacity at 1 lets the hero photo count as LCP immediately. */
+@keyframes visual-in {
+  from {
+    transform: translateY(24px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

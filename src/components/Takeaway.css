@@ -1,0 +1,97 @@
+.takeaway {
+  position: relative;
+  display: grid;
+  align-items: end;
+  min-height: min(100svh, 980px);
+  overflow: hidden;
+  color: #f4f8fa;
+  background: #0d1a24;
+  scroll-margin-top: var(--nav-h);
+}
+
+.takeaway__media {
+  position: absolute;
+  inset: 0;
+}
+
+.takeaway__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: 50% 40%;
+}
+
+.takeaway__grade {
+  /* Cool colour grade so any stock backdrop sits inside the frost palette. */
+  position: absolute;
+  inset: 0;
+  background: #1d5d7e;
+  mix-blend-mode: color;
+  opacity: 0.55;
+}
+
+.takeaway__shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(8, 20, 30, 0.92) 0%, rgba(8, 20, 30, 0.55) 45%, rgba(8, 20, 30, 0.1) 75%),
+    linear-gradient(to left, rgba(8, 20, 30, 0.45), transparent 60%);
+}
+
+[dir='ltr'] .takeaway__shade {
+  background:
+    linear-gradient(to top, rgba(8, 20, 30, 0.92) 0%, rgba(8, 20, 30, 0.55) 45%, rgba(8, 20, 30, 0.1) 75%),
+    linear-gradient(to right, rgba(8, 20, 30, 0.45), transparent 60%);
+}
+
+.takeaway__content {
+  position: relative;
+  z-index: 1;
+  padding-block: clamp(120px, 20vw, 220px) clamp(56px, 9vw, 110px);
+}
+
+/* The accent line is in the other script; align it with the page's reading start. */
+.takeaway__accent {
+  text-align: right;
+  font-size: clamp(1.4rem, 1rem + 2vw, 2.4rem);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--frost);
+}
+
+[dir='ltr'] .takeaway__accent {
+  text-align: left;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.takeaway__title {
+  font-size: clamp(3.4rem, 2rem + 8vw, 9rem);
+  font-weight: 700;
+  line-height: 1.05;
+  margin-block: 6px 22px;
+}
+
+.takeaway__text {
+  max-width: 40ch;
+  font-size: var(--step-1);
+  line-height: 1.9;
+  color: rgba(244, 248, 250, 0.88);
+}
+
+.takeaway__actions {
+  margin-top: 30px;
+}
+
+.takeaway__btn {
+  background: var(--citrus);
+  color: #1d1306;
+}
+
+.takeaway__btn:hover {
+  background: #f3b65a;
+}
+
+.takeaway :focus-visible {
+  outline-color: var(--citrus);
+}

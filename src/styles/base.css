@@ -1,0 +1,298 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.75;
+  color: var(--ink);
+  background: var(--paper);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+/* Arabic display type: never letter-space Arabic (it breaks the joined script). */
+h1,
+h2,
+h3 {
+  font-family: var(--font-display-ar);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Latin display accents inside the page (not the <html lang> itself). */
+body [lang='en'] {
+  font-family: var(--font-display-en);
+}
+
+/* Left-to-right languages (English, Turkish, French): Latin editorial type. */
+[dir='ltr'] body {
+  line-height: 1.6;
+}
+
+[dir='ltr'] h1,
+[dir='ltr'] h2,
+[dir='ltr'] h3 {
+  font-family: var(--font-display-en);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+
+/* Sureth: East Syriac type for both text and headings (Latin still falls back to Alexandria). */
+:root[lang='aii'] {
+  --font-body: 'Noto Sans Syriac Eastern Variable', 'Alexandria Variable', 'Segoe UI', Tahoma, system-ui, sans-serif;
+  --font-display-ar: 'Noto Sans Syriac Eastern Variable', 'Alexandria Variable', Tahoma, sans-serif;
+}
+
+/* Chinese headings: no negative tracking on CJK glyphs. */
+:root[lang='zh-Hans'] h1,
+:root[lang='zh-Hans'] h2,
+:root[lang='zh-Hans'] h3 {
+  letter-spacing: 0;
+}
+
+/* Arabic-script accents on LTR pages: never italic, never letter-spaced. */
+body [lang='ar'] {
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+/* Forward arrows point left in RTL; mirror them on LTR pages. */
+[dir='ltr'] .icon-arrow {
+  transform: scaleX(-1);
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+section[tabindex='-1']:focus {
+  outline: none;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  inset-inline-start: 12px;
+  top: -100px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: var(--radius-s);
+  background: var(--espresso);
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+.wrap {
+  width: min(100% - 2 * var(--gutter), var(--max));
+  margin-inline: auto;
+}
+
+.section {
+  position: relative;
+  padding-block: clamp(72px, 10vw, 140px);
+  scroll-margin-top: var(--nav-h);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.eyebrow__accent[lang='en'] {
+  font-family: var(--font-body);
+  font-size: 0.78em;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.eyebrow__accent[lang='ar'] {
+  font-family: var(--font-display-ar);
+  font-size: 0.95em;
+  opacity: 0.85;
+}
+
+[dir='ltr'] .eyebrow {
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 1.5px;
+  background: currentColor;
+}
+
+.section-title {
+  font-size: var(--step-4);
+  margin-block: 14px 18px;
+}
+
+.lede {
+  max-width: 56ch;
+  font-size: var(--step-1);
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  font-weight: 600;
+  font-size: var(--step-0);
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.35s var(--ease-out),
+    background-color 0.35s var(--ease-out),
+    color 0.35s var(--ease-out);
+}
+
+.btn--primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.btn--primary:hover {
+  background: var(--accent);
+}
+
+.btn--ghost {
+  border-color: currentColor;
+  background: transparent;
+}
+
+.btn--ghost:hover {
+  background: color-mix(in srgb, currentColor 10%, transparent);
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* Touch feedback (most visitors are on phones). */
+.btn,
+.chip-btn,
+.temp-switch__option,
+.lang-switch {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active,
+.chip-btn:active {
+  transform: scale(0.97);
+}
+
+.btn svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+
+/* Temperature chip */
+.temp-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px 4px 10px;
+  border-radius: 999px;
+  font-size: var(--step--1);
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.temp-chip svg {
+  width: 14px;
+  height: 14px;
+}
+
+.temp-chip--hot {
+  background: #f6dccb;
+  color: #8a3416;
+}
+
+.temp-chip--iced {
+  background: #d9ecf4;
+  color: #164a66;
+}
+
+/* Words produced by SplitText (words mode only) */
+.split-word {
+  display: inline-block;
+}

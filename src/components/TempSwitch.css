@@ -1,0 +1,71 @@
+.temp-switch {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: repeat(var(--count), minmax(0, 1fr));
+  width: min(100%, 420px);
+  padding: 5px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+  border: 1px solid var(--line);
+}
+
+.temp-switch__thumb {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  inset-inline-start: calc(5px + var(--idx) * ((100% - 10px) / var(--count)));
+  width: calc((100% - 10px) / var(--count));
+  border-radius: 999px;
+  background: var(--ink);
+  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.45);
+  transition:
+    inset-inline-start 0.5s var(--ease-out),
+    background-color 0.5s var(--ease-out);
+}
+
+.temp-switch[data-value='hot'] .temp-switch__thumb {
+  background: var(--ember);
+}
+
+.temp-switch[data-value='iced'] .temp-switch__thumb {
+  background: var(--glacier);
+}
+
+.temp-switch__option {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.4s var(--ease-out);
+}
+
+.temp-switch__option[aria-checked='true'] {
+  color: #fff;
+}
+
+.temp-switch__option svg {
+  width: 18px;
+  height: 18px;
+}
+
+.temp-switch__option:focus-visible {
+  outline-offset: -3px;
+  outline-color: var(--citrus);
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .temp-switch__thumb,
+  .temp-switch__option {
+    transition: none;
+  }
+}
