@@ -1,6 +1,6 @@
 import type { MenuFilter } from '../lib/menu';
 
-export const LOCALES = ['ar', 'en', 'ku', 'syr', 'tr', 'fr', 'es', 'de', 'it', 'zh'] as const;
+export const LOCALES = ['ar', 'en', 'ku', 'syr', 'sur', 'tr', 'fr', 'es', 'de', 'it', 'zh'] as const;
 export type Locale = (typeof LOCALES)[number];
 export const DEFAULT_LOCALE: Locale = 'ar';
 
@@ -18,6 +18,8 @@ export const LOCALE_META: Record<Locale, LocaleMeta> = {
   en: { label: 'English', htmlLang: 'en', dir: 'ltr', digits: 'latn' },
   ku: { label: 'کوردی', htmlLang: 'ckb', dir: 'rtl', digits: 'arab' },
   syr: { label: 'ܣܘܪܝܬ', htmlLang: 'aii', dir: 'rtl', digits: 'latn' },
+  /** Spoken Lishana Surith written in Latin letters. */
+  sur: { label: 'Surith', htmlLang: 'aii-Latn', dir: 'ltr', digits: 'latn' },
   tr: { label: 'Türkçe', htmlLang: 'tr', dir: 'ltr', digits: 'latn' },
   fr: { label: 'Français', htmlLang: 'fr', dir: 'ltr', digits: 'latn' },
   es: { label: 'Español', htmlLang: 'es', dir: 'ltr', digits: 'latn' },

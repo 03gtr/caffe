@@ -7,12 +7,13 @@ import { es } from './es';
 import { fr } from './fr';
 import { it } from './it';
 import { ku } from './ku';
+import { sur } from './sur';
 import { syr } from './syr';
 import { tr } from './tr';
 import { zh } from './zh';
 import { DEFAULT_LOCALE, LOCALE_META, isLocale, type Locale, type LocaleMeta, type Messages } from './types';
 
-export const MESSAGES: Record<Locale, Messages> = { ar, en, ku, syr, tr, fr, es, de, it, zh };
+export const MESSAGES: Record<Locale, Messages> = { ar, en, ku, syr, sur, tr, fr, es, de, it, zh };
 const STORAGE_KEY = 'steam-frost-lang';
 
 export interface I18n {
