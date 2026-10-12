@@ -47,5 +47,5 @@ export function hasContactInfo(b: BusinessInfo): boolean {
 /** Studio credit shown at the very end of the page. `url: null` renders the name without a link. */
 export const poweredBy: { name: string; url: string | null } = {
   name: 'iq group',
-  url: null
+  url: 'https://iq-group.app'
 };
