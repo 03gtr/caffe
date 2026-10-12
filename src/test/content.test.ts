@@ -40,9 +40,9 @@ describe('concept content', () => {
 });
 
 describe('languages', () => {
-  it('offers Arabic first plus eleven more languages with correct direction', () => {
+  it('offers Arabic first plus ten more languages with correct direction', () => {
     expect(LOCALES[0]).toBe('ar');
-    expect(LOCALES).toEqual(['ar', 'en', 'ku', 'syr', 'sar', 'sur', 'tr', 'fr', 'es', 'de', 'it', 'zh']);
+    expect(LOCALES).toEqual(['ar', 'en', 'ku', 'syr', 'sar', 'tr', 'fr', 'es', 'de', 'it', 'zh']);
     expect(LOCALES.filter((l) => LOCALE_META[l].dir === 'rtl')).toEqual(['ar', 'ku', 'syr', 'sar']);
   });
 
@@ -68,7 +68,7 @@ describe('languages', () => {
 
   it('writes each language in its own script', () => {
     const arabic = /[؀-ۿ]/;
-    for (const l of ['en', 'sur', 'tr', 'fr', 'es', 'de', 'it', 'zh'] as const) expect(MESSAGES[l].hero.lede).not.toMatch(arabic);
+    for (const l of ['en', 'tr', 'fr', 'es', 'de', 'it', 'zh'] as const) expect(MESSAGES[l].hero.lede).not.toMatch(arabic);
     expect(MESSAGES.ku.hero.lede).toMatch(/[ڕڵۆێە]/);
     expect(MESSAGES.syr.hero.lede).toMatch(/[ܐ-ܯ]/);
     expect(MESSAGES.syr.hero.lede).not.toMatch(/[ء-ي]/);

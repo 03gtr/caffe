@@ -22,10 +22,10 @@ npm run build:share  # ONE self-contained file → share/steam-and-frost.html (s
 
 ## Languages
 
-Twelve languages, picked from the globe button in the header (a native `<select>`, so phones show their own picker):
+Eleven languages, picked from the globe button in the header (a native `<select>`, so phones show their own picker):
 Arabic (default) · English · کوردی (Central Kurdish / Sorani) · ܣܘܪܝܬ (Sureth, Assyrian Neo-Aramaic, East Syriac
-script) · سورث (لفظ عربي) — the same Sureth written in Arabic letters as pronounced (ܐܣܝܐ → أسيا) · Surith (spoken Sureth in Latin letters, following the client's Nineveh Plains dictionary) · Türkçe · Français · Español · Deutsch · Italiano · 中文 (Simplified Chinese). The choice is remembered and can
-be forced with `?lang=ar|en|ku|syr|sar|sur|tr|fr|es|de|it|zh`. Arabic, Kurdish and both Sureth scripts (Syriac, Arabic letters) are right-to-left, the others
+script) · سورث (لفظ عربي) — the same Sureth written in Arabic letters as pronounced (ܐܣܝܐ → أسيا) · Türkçe · Français · Español · Deutsch · Italiano · 中文 (Simplified Chinese). The choice is remembered and can
+be forced with `?lang=ar|en|ku|syr|sar|tr|fr|es|de|it|zh`. Arabic, Kurdish and both Sureth scripts (Syriac, Arabic letters) are right-to-left, the others
 left-to-right: the Split Pour, arrow keys, thermometer, arrows and gradients mirror automatically. Every string lives
 in `src/i18n/<lang>.ts` (TypeScript refuses a language file that misses a string). Small bilingual accents show
 English on RTL pages and Arabic on LTR pages. Sureth uses a self-hosted Noto Sans Syriac Eastern subset; Chinese uses

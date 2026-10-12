@@ -1,6 +1,6 @@
 import type { MenuFilter } from '../lib/menu';
 
-export const LOCALES = ['ar', 'en', 'ku', 'syr', 'sar', 'sur', 'tr', 'fr', 'es', 'de', 'it', 'zh'] as const;
+export const LOCALES = ['ar', 'en', 'ku', 'syr', 'sar', 'tr', 'fr', 'es', 'de', 'it', 'zh'] as const;
 export type Locale = (typeof LOCALES)[number];
 export const DEFAULT_LOCALE: Locale = 'ar';
 
@@ -20,8 +20,6 @@ export const LOCALE_META: Record<Locale, LocaleMeta> = {
   syr: { label: 'ܣܘܪܝܬ', htmlLang: 'aii', dir: 'rtl', digits: 'latn' },
   /** Sureth written in Arabic letters exactly as pronounced (ܐܣܝܐ → أسيا). */
   sar: { label: 'سورث (لفظ عربي)', htmlLang: 'aii-Arab', dir: 'rtl', digits: 'arab' },
-  /** Spoken Lishana Surith written in Latin letters. */
-  sur: { label: 'Surith', htmlLang: 'aii-Latn', dir: 'ltr', digits: 'latn' },
   tr: { label: 'Türkçe', htmlLang: 'tr', dir: 'ltr', digits: 'latn' },
   fr: { label: 'Français', htmlLang: 'fr', dir: 'ltr', digits: 'latn' },
   es: { label: 'Español', htmlLang: 'es', dir: 'ltr', digits: 'latn' },
